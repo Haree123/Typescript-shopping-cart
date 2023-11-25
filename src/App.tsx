@@ -8,6 +8,7 @@ import About from "./routes/About";
 import { Provider } from "react-redux";
 import { store } from "./redux/store/redux-store";
 
+
 function App() {
   return (
     <Provider store={store}>
