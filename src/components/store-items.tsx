@@ -6,7 +6,7 @@ import {
   increaseCartQuantity,
   removeItemFromCart,
 } from "../redux/reducers/cart.reducers";
-import useItemQuantity from "../hooks/useItemQuantity";
+import useQuantity from "../hooks/useItemQuantity";
 
 interface StoreItemsProps {
   id: number;
@@ -17,7 +17,7 @@ interface StoreItemsProps {
 
 const StoreItems = ({ id, name, price, imgUrl }: StoreItemsProps) => {
   const dispatch = useDispatch();
-  const itemQuantity = useItemQuantity(id);
+  const itemQuantity = useQuantity(true, id);
 
   const incrementQuantity = (itemId: number): void => {
     dispatch(

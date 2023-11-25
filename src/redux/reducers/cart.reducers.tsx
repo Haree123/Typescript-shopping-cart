@@ -9,12 +9,18 @@ interface itemId {
   id: number;
 }
 
+interface ShoppingCart {
+  isOpen: boolean;
+}
+
 export interface CartItems {
   cartItems: item[];
+  isOpen: boolean;
 }
 
 const initialState: CartItems = {
   cartItems: [],
+  isOpen: false,
 };
 
 const CartReducer = createSlice({
@@ -60,11 +66,15 @@ const CartReducer = createSlice({
         (item) => item.id !== action.payload.id
       );
     },
+    handleShoppingCart: (state, action: PayloadAction<ShoppingCart>) => {
+      state.isOpen = action.payload.isOpen;
+    },
   },
 });
 
 export const {
   decreaseCartQuantity,
+  handleShoppingCart,
   increaseCartQuantity,
   removeItemFromCart,
 } = CartReducer.actions;
